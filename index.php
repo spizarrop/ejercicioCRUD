@@ -26,9 +26,11 @@ $resultado = $conexion->query($sql);
                 echo "<label>".$fila['nombre']."</label>";
                 echo "<a href='modificar.php?idProfesor=".$fila['idProfesor']."' class='button'>Modificar</a>";
                 echo "<a href='eliminar.php?idProfesor=".$fila['idProfesor']."' class='button'>Eliminar</a>";
+                echo "<button type='submit' formaction='modificar.php?idProfesor=".$fila['idProfesor']."'>Crear</button>";
                 echo "<br>";
             }
 			?>
+            
     </form>
 </body>
 </html>
