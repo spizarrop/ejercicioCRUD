@@ -17,8 +17,7 @@ if (isset($_GET['eliminar'])) {
 </head>
 <body>
     <form method="GET">
-        <label>Nombre:</label><br>
-        <input type="text" name="nuevoNombre" value="<?php $_GET['nombre'] ?>">
+        <label>¿Seguro que deseas eliminar a <?php $_GET['nombre'] ?> de la lista de profesores?</label><br>
         <button type='submit' name='eliminar'>Eliminar</button>
     </form>
 </body>
