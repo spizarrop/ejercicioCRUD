@@ -1,10 +1,7 @@
 <?php
 require_once "conexionDB.php";
-
-// Creamos la conexion
 $conexion = new mysqli(SERVER,USER,PASS,DB);
 
-// Obtener nombre del profesores
 $sql = "SELECT nombre FROM profesores WHERE idProfesor=".$_GET['idProfesor'];
 $resultado = $conexion->query($sql);
 $fila = $resultado->fetch_assoc();
@@ -18,10 +15,13 @@ $nombre = $fila['nombre'];
     <title>Modificar</title>
 </head>
 <body>
-    <form action="resultado.php" method="GET">
+    <form action="resuModificar.php" method="GET">
         <label>Nombre:</label><br>
-        <?php echo "<input type='text' name='nuevoNombre' value='".$nombre."'>"; ?>
-        <button type='submit' name='aplicar'>Aplicar</button>
+        <?php
+        echo "<input type='hidden' name='idProfesor' value='".$_GET['idProfesor']."'>";
+        echo "<input type='text' name='nuevoNombre' value='".$nombre."'>";
+        ?>
+        <button type='submit'>Aplicar</button>
     </form>
 </body>
 </html>

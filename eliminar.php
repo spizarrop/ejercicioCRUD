@@ -1,12 +1,14 @@
 <?php
+require_once "conexionDB.php";
 
-// Eliminar profesor
-if (isset($_GET['eliminar'])) {
-    if ($idProfesor) {
-		$sql = "DELETE FROM profesores WHERE idProfesor=".$idProfesor;
-        $conexion->query($sql);
-    }
-}
+// Creamos la conexion
+$conexion = new mysqli(SERVER,USER,PASS,DB);
+
+// Obtener nombre del profesor
+$sql = "SELECT nombre FROM profesores WHERE idProfesor=".$_GET['idProfesor'];
+$resultado = $conexion->query($sql);
+$fila = $resultado->fetch_assoc();
+$nombre = $fila['nombre'];
 
 ?>
 <!DOCTYPE html>
@@ -16,8 +18,9 @@ if (isset($_GET['eliminar'])) {
     <title>Eliminar</title>
 </head>
 <body>
-    <form method="GET">
-        <label>¿Seguro que deseas eliminar a <?php $_GET['nombre'] ?> de la lista de profesores?</label><br>
+    <form action="resuEliminar.php" method="GET">
+        <label>¿Seguro que deseas eliminar a <?php echo $nombre ?> de la lista de profesores?</label><br>
+        <?php echo "<input type='hidden' name='idProfesor' value='".$_GET['idProfesor']."'>"; ?>
         <button type='submit' name='eliminar'>Eliminar</button>
     </form>
 </body>
