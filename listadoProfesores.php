@@ -15,7 +15,6 @@ $resultado = $conexion->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>CRUD de Profesores</title>
-    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h2>Gestión de Profesores</h2>
@@ -23,8 +22,8 @@ $resultado = $conexion->query($sql);
         <?php
         while ($fila = $resultado->fetch_assoc()) {
             echo "<label>".$fila['nombre']."</label>";
-            echo "<a href='modificar.php?idProfesor=".$fila['idProfesor']."' class='button'>Modificar</a>";
-            echo "<a href='eliminar.php?idProfesor=".$fila['idProfesor']."' class='button'>Eliminar</a>";
+            echo " <a href='modificar.php?idProfesor=".$fila['idProfesor']."' class='button'>Modificar</a>";
+            echo " <a href='eliminar.php?idProfesor=".$fila['idProfesor']."' class='button'>Eliminar</a>";
             echo "<br>";
         }
         ?>
